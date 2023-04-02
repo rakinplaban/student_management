@@ -1,18 +1,25 @@
 import java.util.ArrayList;
 import java.io.*;
-public class Admin {
-    private String username;
-    private String password;
+public class Admin extends User{
     private ArrayList<Student> students;
     private ArrayList<Teacher> teachers;
 
-    Admin(String username, String password) {
-        this.username = username;
-        this.password = password;
+    Admin() {
+        this.username = "admin";
+        this.password = "password";
         students = new ArrayList<>();
         teachers = new ArrayList<>();
     }
 
+    @Override
+    public boolean authentication(String username,String password){
+        if(this.username.equals(username)  && this.password.equals(password)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     private void savestudentdata() {
         try {
             FileWriter writer = new FileWriter("students.txt");
@@ -52,7 +59,7 @@ public class Admin {
     }
 
     public void createTeacher(String username, String password) {
-        Teacher teacher = new Teacher(username, password);
+        Teacher teacher = new Teacher(username,password);
         teachers.add(teacher);
         saveTeacherData();
     }

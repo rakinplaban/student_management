@@ -1,3 +1,4 @@
-Rakin,3,Dhaka
-Raisa,1,Araihazar
-Pial,1,Sonargaon
+Taichi,1,Japan
+Takeo,2,Japan
+Miku,3,Japan
+Hiru,5,China
