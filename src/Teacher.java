@@ -12,7 +12,26 @@ public class Teacher extends User{
 
     @Override
     public boolean authentication(String username,String password){
-        return this.username == username && this.password == password;
+        try {
+            Scanner scanner = new Scanner(new File("teachers.txt"));
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                if (line.contains(username) && line.contains(password)) {
+                    System.out.println("Username and password found in the file!");
+                    scanner.close();
+                    return true;
+                }
+            }
+
+            System.out.println("Username and/or password not found in the file.");
+            scanner.close();
+
+        }catch(FileNotFoundException e){
+            return false;
+        }
+        return false;
     }
 
     public String getUsername() {
